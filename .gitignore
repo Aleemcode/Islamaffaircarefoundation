@@ -1,0 +1,6 @@
+.env
+.env.*
+!.env.example
+.tmp/*
+!.tmp/.gitkeep
+.skill-build/
