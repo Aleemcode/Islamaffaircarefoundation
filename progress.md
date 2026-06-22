@@ -31,3 +31,5 @@
 - Diagnosed a Vercel GitHub import error: the local ISF repository has no commits and no GitHub remote, so Vercel cannot find a branch or commit to deploy yet.
 - Connected the local ISF repository to `https://github.com/Aleemcode/Islamaffaircarefoundation.git` and prepared the initial `main` branch commit.
 - Created commit `02e7564` (`Initialize ISF project blueprint`) and pushed `main` to GitHub for Vercel import.
+- User reported the Vercel/GitHub import step was completed. Local verification still needs either a Vercel token or the resulting Vercel project/deployment URL.
+- Checked local deployment readiness after import: Supabase frontend values are present in `.env.local`, Vercel token is not present, and the repository does not yet include the React/Vite application scaffold.
