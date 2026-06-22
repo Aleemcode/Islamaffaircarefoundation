@@ -81,6 +81,7 @@
 - Vercel Git imports require a repository branch with at least one pushed commit before the project can be imported and deployed.
 - Before using Vercel's GitHub import flow, create or connect a GitHub repository, make an initial commit, push a production branch such as `main`, and then import that repository in Vercel.
 - The selected GitHub repository is `https://github.com/Aleemcode/Islamaffaircarefoundation.git`.
+- The `main` branch was pushed to the selected GitHub repository on 2026-06-22, so Vercel can retry the GitHub import against a real branch and commit.
 
 ## Baytul Asmaa Reference Architecture
 

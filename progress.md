@@ -30,3 +30,4 @@
 - Added and ran `tools/check-supabase-link.mjs`; verified the project and Supabase Auth, REST, Storage, and Realtime services are healthy without exposing credentials.
 - Diagnosed a Vercel GitHub import error: the local ISF repository has no commits and no GitHub remote, so Vercel cannot find a branch or commit to deploy yet.
 - Connected the local ISF repository to `https://github.com/Aleemcode/Islamaffaircarefoundation.git` and prepared the initial `main` branch commit.
+- Created commit `02e7564` (`Initialize ISF project blueprint`) and pushed `main` to GitHub for Vercel import.
