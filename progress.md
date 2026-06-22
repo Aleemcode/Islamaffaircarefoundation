@@ -36,3 +36,11 @@
 - Added and ran `tools/check-vercel-link.mjs`; verified the saved Vercel token with HTTP `200` and confirmed no team ID is required for the current personal-account setup.
 - Rechecked `.env.local`: all required Supabase and Vercel values are present, optional team/site fields may remain blank, Supabase URL matches the project ref, and `.env.local` remains ignored by Git.
 - Reran live Supabase and Vercel Link checks; both returned HTTP `200` for their required handshakes, with Supabase services reporting `ACTIVE_HEALTHY`.
+
+## 2026-06-23
+
+- Started the Architect phase after Link verification.
+- Added the first deployable React/Vite application shell with public routes, donation placeholder, contact/social route, admin CMS shell, Vercel SPA rewrite, Supabase browser-client wiring, ISF design tokens, and a CSS-based city parallax scene.
+- Added `architecture/app-shell-sop.md` to document app-shell scope, route surface, media restrictions, environment requirements, and verification commands.
+- Installed npm dependencies; audit reported `0` vulnerabilities.
+- Ran `npm run lint` and `npm run build`; both passed after aligning TypeScript path aliases with Vite.

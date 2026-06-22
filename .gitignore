@@ -1,6 +1,8 @@
 .env
 .env.*
 !.env.example
+node_modules/
+dist/
 .tmp/*
 !.tmp/.gitkeep
 .skill-build/

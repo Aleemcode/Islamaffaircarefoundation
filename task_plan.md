@@ -2,7 +2,7 @@
 
 ## Status
 
-- Phase: Link
+- Phase: Architect
 - Blueprint approval: Approved on 2026-06-21
 - Data contract: `0.1.0` approved on 2026-06-21
 - Implementation authorization: Approved
@@ -18,8 +18,12 @@
 ## B.L.A.S.T. Phases
 
 - [x] Blueprint: discovery, direction, and canonical CMS data contracts approved
-- [ ] Link: Supabase verified; provision and verify the dedicated Vercel project
+- [x] Link: Supabase and Vercel credentials verified; GitHub import path unblocked
 - [ ] Architect: document SOPs and implement testable components
+  - [x] App shell: React/Vite routes, ISF design foundation, Supabase client, admin CMS shell
+  - [ ] Database: Supabase migrations, RLS, storage policies, seed content
+  - [ ] CMS: authenticated staff flows and CRUD modules
+  - [ ] Public data: published-content queries and degraded states
 - [ ] Stylize: refine and review user-facing output
 - [ ] Trigger: deploy, configure triggers, and verify delivery
 
@@ -35,6 +39,7 @@
 - 2026-06-22: User reported completing the Vercel import flow; local verification remains pending until a Vercel token or project/deployment URL is available.
 - 2026-06-22: Saved Vercel token was verified against the Vercel API; no team ID is required for the current personal-account setup.
 - 2026-06-22: Environment configuration was rechecked and all required Link credentials are present and verified; Architect phase can proceed.
+- 2026-06-23: Architect phase started with the first deployable React/Vite public site and admin CMS shell.
 - 2026-06-21: User supplied the provisional North Star. Measurable success targets remain pending.
 - 2026-06-21: User supplied an organization profile. Official identity, channels, and program claims remain pending verification.
 - 2026-06-21: User designated Instagram and Facebook profile URLs and supplied the ISF logo. Other integrations remain pending.
