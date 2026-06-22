@@ -34,3 +34,5 @@
 - User reported the Vercel/GitHub import step was completed. Local verification still needs either a Vercel token or the resulting Vercel project/deployment URL.
 - Checked local deployment readiness after import: Supabase frontend values are present in `.env.local`, Vercel token is not present, and the repository does not yet include the React/Vite application scaffold.
 - Added and ran `tools/check-vercel-link.mjs`; verified the saved Vercel token with HTTP `200` and confirmed no team ID is required for the current personal-account setup.
+- Rechecked `.env.local`: all required Supabase and Vercel values are present, optional team/site fields may remain blank, Supabase URL matches the project ref, and `.env.local` remains ignored by Git.
+- Reran live Supabase and Vercel Link checks; both returned HTTP `200` for their required handshakes, with Supabase services reporting `ACTIVE_HEALTHY`.
