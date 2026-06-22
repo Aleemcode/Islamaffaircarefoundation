@@ -33,3 +33,4 @@
 - Created commit `02e7564` (`Initialize ISF project blueprint`) and pushed `main` to GitHub for Vercel import.
 - User reported the Vercel/GitHub import step was completed. Local verification still needs either a Vercel token or the resulting Vercel project/deployment URL.
 - Checked local deployment readiness after import: Supabase frontend values are present in `.env.local`, Vercel token is not present, and the repository does not yet include the React/Vite application scaffold.
+- Added and ran `tools/check-vercel-link.mjs`; verified the saved Vercel token with HTTP `200` and confirmed no team ID is required for the current personal-account setup.

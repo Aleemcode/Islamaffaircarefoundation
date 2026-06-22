@@ -33,6 +33,7 @@
 - 2026-06-22: GitHub remote selected for Vercel import: `https://github.com/Aleemcode/Islamaffaircarefoundation.git`.
 - 2026-06-22: Initial `main` branch commit was pushed to GitHub; Vercel import can be retried.
 - 2026-06-22: User reported completing the Vercel import flow; local verification remains pending until a Vercel token or project/deployment URL is available.
+- 2026-06-22: Saved Vercel token was verified against the Vercel API; no team ID is required for the current personal-account setup.
 - 2026-06-21: User supplied the provisional North Star. Measurable success targets remain pending.
 - 2026-06-21: User supplied an organization profile. Official identity, channels, and program claims remain pending verification.
 - 2026-06-21: User designated Instagram and Facebook profile URLs and supplied the ISF logo. Other integrations remain pending.

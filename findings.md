@@ -82,6 +82,8 @@
 - Before using Vercel's GitHub import flow, create or connect a GitHub repository, make an initial commit, push a production branch such as `main`, and then import that repository in Vercel.
 - The selected GitHub repository is `https://github.com/Aleemcode/Islamaffaircarefoundation.git`.
 - The `main` branch was pushed to the selected GitHub repository on 2026-06-22, so Vercel can retry the GitHub import against a real branch and commit.
+- On 2026-06-22, the saved Vercel token was verified through `https://api.vercel.com/v2/user` with HTTP `200`.
+- The verified Vercel account username is `aakinyoola857-3476`; no `VERCEL_TEAM_ID` is required because the current setup is personal-account mode.
 
 ## Baytul Asmaa Reference Architecture
 
