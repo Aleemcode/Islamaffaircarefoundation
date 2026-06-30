@@ -154,7 +154,7 @@ export function AdminShell() {
     <div className="admin-layout">
       <aside className="admin-sidebar">
         <div className="sidebar-brand">
-          <img src="/assets/isf-logo.svg" alt="" className="brand-mark" />
+          <img src="/assets/isf-emblem.svg" alt="" className="brand-mark" />
           <span>ISF Console</span>
         </div>
 

@@ -63,3 +63,16 @@
   - Refactored `AdminShell` to include tab navigation for CMS modules.
   - Wired public website pages (`Home`, `Donate`, `Contact`, `Programs`, `Campaigns`, `Activities`, `Resources`, and `Impact`) to pull live content and handle public inquiry submissions.
   - Appended layout, table, modal, and uploader CSS to `styles.css` and verified compilation with `npm run lint` and `npm run build`.
+  - Removed the white background from the logo SVG (public/assets/isf-logo.svg) to make it transparent.
+  - Created an emblem-only SVG (public/assets/isf-emblem.svg) by cropping the original SVG's viewBox to focus on the central dome.
+  - Updated the navbar and footer brand lockups in src/components/Layout.tsx to use the new emblem-only SVG and display the full name "Islamaffair Care Foundation" horizontally in crisp HTML/CSS.
+  - Increased the size of the logo in src/styles.css from 34px to 48px, improved spacing, styled the new brand text, and added responsive layout adjustments for smaller screens.
+  - Updated src/pages/admin/AdminShell.tsx to render the clean isf-emblem.svg in the console brand sidebar.
+  - Synchronized the organization name metadata in src/data/siteContent.ts to use "Islamaffair Care Foundation".
+- Completed Stylize Phase Landing Page Iteration:
+  - Installed `frontend-design`, `ui-ux-pro-max`, and `copywriting` skills under `.agents/skills/`.
+  - Refactored `src/pages/Home.tsx` to add an Islamic Utility Info Bar displaying dates and Lagos prayer times.
+  - Implemented a Quick Donation Status Widget and live campaigns section with visual progress trackers.
+  - Created a Scholarly Board Assurance Card explaining our strict verification system.
+  - Refactored typography by importing and pairing "Outfit" and "Playfair Display" Google Fonts.
+  - Fixed CSS compile warnings related to import statements ordering and verified build compiles successfully.

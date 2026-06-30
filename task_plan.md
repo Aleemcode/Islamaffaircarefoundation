@@ -24,7 +24,7 @@
   - [x] Database: Supabase migrations, RLS, storage policies, seed content
   - [x] CMS: authenticated staff flows and CRUD modules
   - [x] Public data: published-content queries and degraded states
-- [ ] Stylize: refine and review user-facing output
+- [x] Stylize: refine and review user-facing output (removed white background from logo, increased size in navbar/footer, and changed abbreviation to full name)
 - [ ] Trigger: deploy, configure triggers, and verify delivery
 
 ## Approval Record

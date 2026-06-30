@@ -8,7 +8,7 @@ import {
 } from 'lucide-react';
 
 export const organization = {
-  name: 'Islamaffairs Foundation',
+  name: 'Islamaffair Care Foundation',
   shortName: 'ISF',
   instagramUrl: 'https://www.instagram.com/islamaffaircarefoundation/',
   facebookUrl: 'https://web.facebook.com/Islamaffair.f/',

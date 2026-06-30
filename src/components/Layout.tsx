@@ -12,9 +12,9 @@ export function Layout() {
   return (
     <div className="site-shell">
       <header className="site-header">
-        <NavLink to="/" className="brand-lockup" aria-label="ISF home">
-          <img src="/assets/isf-logo.svg" alt="" className="brand-mark" />
-          <span>{organization.shortName}</span>
+        <NavLink to="/" className="brand-lockup" aria-label="Islamaffair Care Foundation home">
+          <img src="/assets/isf-emblem.svg" alt="" className="brand-mark" />
+          <span className="brand-text">Islamaffair Care Foundation</span>
         </NavLink>
 
         <nav className="desktop-nav" aria-label="Primary navigation">
@@ -41,8 +41,8 @@ export function Layout() {
       <footer className="site-footer">
         <div>
           <div className="brand-lockup footer-brand">
-            <img src="/assets/isf-logo.svg" alt="" className="brand-mark" />
-            <span>{organization.shortName}</span>
+            <img src="/assets/isf-emblem.svg" alt="" className="brand-mark" />
+            <span className="brand-text">Islamaffair Care Foundation</span>
           </div>
           <p>
             A faith-based platform for da’wah, welfare, religious education, and community
