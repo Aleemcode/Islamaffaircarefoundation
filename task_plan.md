@@ -19,11 +19,11 @@
 
 - [x] Blueprint: discovery, direction, and canonical CMS data contracts approved
 - [x] Link: Supabase and Vercel credentials verified; GitHub import path unblocked
-- [ ] Architect: document SOPs and implement testable components
+- [x] Architect: document SOPs and implement testable components
   - [x] App shell: React/Vite routes, ISF design foundation, Supabase client, admin CMS shell
   - [x] Database: Supabase migrations, RLS, storage policies, seed content
-  - [/] CMS: authenticated staff flows and CRUD modules
-  - [ ] Public data: published-content queries and degraded states
+  - [x] CMS: authenticated staff flows and CRUD modules
+  - [x] Public data: published-content queries and degraded states
 - [ ] Stylize: refine and review user-facing output
 - [ ] Trigger: deploy, configure triggers, and verify delivery
 
