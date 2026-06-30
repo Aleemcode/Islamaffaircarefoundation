@@ -1,16 +1,37 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Loader2, LogOut, UserCheck, ShieldAlert } from 'lucide-react';
+import { Loader2, LogOut, UserCheck, ShieldAlert, LayoutDashboard, Settings, Image, Calendar, Megaphone, Heart, FileText, Info } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 import { AdminLogin } from '@/components/admin/AdminLogin';
-import { adminModules } from '@/lib/navigation';
+import { SettingsManager } from '@/components/admin/SettingsManager';
+import { MediaManager } from '@/components/admin/MediaManager';
+import { ProgramsManager } from '@/components/admin/ProgramsManager';
+import { CampaignsManager } from '@/components/admin/CampaignsManager';
+import { EventsManager } from '@/components/admin/EventsManager';
+import { StoriesManager } from '@/components/admin/StoriesManager';
+import { ResourcesManager } from '@/components/admin/ResourcesManager';
+
+type CmsTab =
+  | 'Dashboard overview'
+  | 'Programs and services'
+  | 'Campaigns and appeals'
+  | 'Activities and events'
+  | "Da'wah resources"
+  | 'Impact stories and updates'
+  | 'Media library'
+  | 'Site settings'
+  | 'Pages'
+  | 'Staff access and roles'
+  | 'Audit history';
 
 export function AdminShell() {
   const { session, profile, loading, signOut } = useAuth();
+  const [activeTab, setActiveTab] = useState<CmsTab>('Dashboard overview');
 
   if (loading) {
     return (
       <div className="admin-loading-screen">
-        <Loader2 className="animate-spin text-isf-green" size={40} />
+        <Loader2 className="animate-spin" size={40} style={{ color: 'var(--isf-green)' }} />
         <p>Verifying credentials...</p>
       </div>
     );
@@ -49,37 +70,130 @@ export function AdminShell() {
     );
   }
 
+  function renderTabContent() {
+    switch (activeTab) {
+      case 'Dashboard overview':
+        return (
+          <div className="dashboard-home">
+            <h2>Assalamu Alaikum, {profile?.display_name}</h2>
+            <p>Welcome to the ISF content operations dashboard. Use the sidebar to navigate modules.</p>
+
+            <div className="stats-grid">
+              <article className="stat-card">
+                <h3>Your Role</h3>
+                <span className="stat-val">{profile?.role.toUpperCase()}</span>
+              </article>
+              <article className="stat-card">
+                <h3>Account Status</h3>
+                <span className="stat-val status-active">ACTIVE</span>
+              </article>
+            </div>
+          </div>
+        );
+      case 'Site settings':
+        return <SettingsManager />;
+      case 'Media library':
+        return <MediaManager />;
+      case 'Programs and services':
+        return <ProgramsManager />;
+      case 'Campaigns and appeals':
+        return <CampaignsManager />;
+      case 'Activities and events':
+        return <EventsManager />;
+      case "Da'wah resources":
+        return <ResourcesManager />;
+      case 'Impact stories and updates':
+        return <StoriesManager />;
+      default:
+        return (
+          <div className="placeholder-tab">
+            <Info size={32} />
+            <h3>Module Integration Pending</h3>
+            <p>The "{activeTab}" module is approved in data contract 0.1.0 and is queued for interface integration.</p>
+          </div>
+        );
+    }
+  }
+
+  function getTabIcon(tab: CmsTab) {
+    switch (tab) {
+      case 'Dashboard overview':
+        return <LayoutDashboard size={16} />;
+      case 'Site settings':
+        return <Settings size={16} />;
+      case 'Media library':
+        return <Image size={16} />;
+      case 'Programs and services':
+        return <Heart size={16} />;
+      case 'Campaigns and appeals':
+        return <Megaphone size={16} />;
+      case 'Activities and events':
+        return <Calendar size={16} />;
+      case "Da'wah resources":
+        return <FileText size={16} />;
+      default:
+        return <Info size={16} />;
+    }
+  }
+
+  const tabs: CmsTab[] = [
+    'Dashboard overview',
+    'Programs and services',
+    'Campaigns and appeals',
+    'Activities and events',
+    "Da'wah resources",
+    'Impact stories and updates',
+    'Media library',
+    'Site settings',
+    'Pages',
+    'Staff access and roles',
+    'Audit history',
+  ];
+
   return (
-    <section className="admin-page">
-      <div className="admin-header">
-        <div>
-          <p className="eyebrow">Admin CMS — Connected</p>
-          <h1>ISF Content Operations</h1>
+    <div className="admin-layout">
+      <aside className="admin-sidebar">
+        <div className="sidebar-brand">
+          <img src="/assets/isf-logo.svg" alt="" className="brand-mark" />
+          <span>ISF Console</span>
+        </div>
+
+        <nav className="sidebar-nav">
+          {tabs.map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`sidebar-link ${activeTab === tab ? 'active' : ''}`}
+            >
+              {getTabIcon(tab)}
+              <span>{tab}</span>
+            </button>
+          ))}
+        </nav>
+
+        <div className="sidebar-footer">
           <div className="staff-identity">
             <span className="identity-badge">
-              <UserCheck size={14} />
-              {profile.display_name} ({profile.role})
+              <UserCheck size={12} />
+              {profile?.display_name}
             </span>
           </div>
-        </div>
-        <div className="header-actions">
-          <Link to="/" className="button button-secondary">
-            Back to Site
-          </Link>
-          <button onClick={signOut} className="button button-dark logout-button">
-            <LogOut size={16} /> Sign Out
+          <button onClick={signOut} className="sidebar-logout">
+            <LogOut size={14} /> Sign Out
           </button>
         </div>
-      </div>
+      </aside>
 
-      <div className="admin-grid">
-        {adminModules.map((module) => (
-          <article className="admin-module" key={module}>
-            <h2>{module}</h2>
-            <p>Authorized access as {profile.role}. Content operations module pending integration.</p>
-          </article>
-        ))}
-      </div>
-    </section>
+      <main className="admin-main">
+        <header className="admin-topbar">
+          <span className="breadcrumbs">Console / {activeTab}</span>
+          <Link to="/" className="button button-secondary back-btn">
+            View Live Site
+          </Link>
+        </header>
+
+        <section className="admin-content">{renderTabContent()}</section>
+      </main>
+    </div>
   );
 }

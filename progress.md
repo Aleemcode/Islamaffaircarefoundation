@@ -58,3 +58,8 @@
   - Implemented the `AdminLogin` form UI using Nigeria forest green styling parameters.
   - Updated `AdminShell` to redirect unauthenticated staff and block unactivated profiles.
   - Wrapped core routes in `App.tsx` and validated compilation with `npm run lint` and `npm run build`.
+- Implemented CMS CRUD Modules & Public Website Integrations:
+  - Created settings manager, file uploader (media library), programs manager, campaigns manager, events manager, stories manager, and resources manager.
+  - Refactored `AdminShell` to include tab navigation for CMS modules.
+  - Wired public website pages (`Home`, `Donate`, `Contact`, `Programs`, `Campaigns`, `Activities`, `Resources`, and `Impact`) to pull live content and handle public inquiry submissions.
+  - Appended layout, table, modal, and uploader CSS to `styles.css` and verified compilation with `npm run lint` and `npm run build`.
