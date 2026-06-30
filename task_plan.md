@@ -21,7 +21,7 @@
 - [x] Link: Supabase and Vercel credentials verified; GitHub import path unblocked
 - [ ] Architect: document SOPs and implement testable components
   - [x] App shell: React/Vite routes, ISF design foundation, Supabase client, admin CMS shell
-  - [ ] Database: Supabase migrations, RLS, storage policies, seed content
+  - [x] Database: Supabase migrations, RLS, storage policies, seed content
   - [ ] CMS: authenticated staff flows and CRUD modules
   - [ ] Public data: published-content queries and degraded states
 - [ ] Stylize: refine and review user-facing output

@@ -44,3 +44,11 @@
 - Added `architecture/app-shell-sop.md` to document app-shell scope, route surface, media restrictions, environment requirements, and verification commands.
 - Installed npm dependencies; audit reported `0` vulnerabilities.
 - Ran `npm run lint` and `npm run build`; both passed after aligning TypeScript path aliases with Vite.
+
+## 2026-06-30
+
+- Resumed the inactive/paused remote Supabase project `vcngwmghpjpchcnpamyx` using user instructions.
+- Synced the remote Postgres database password with the local `.env.local` credentials via the Supabase Management API.
+- Linked the local CLI and successfully pushed all core schema migrations and bootstrap settings (`20260623090000_cms_core.sql` and `20260623091000_seed_site_settings.sql`) to the remote Supabase database.
+- Fixed a bug in `tools/check-database-link.mjs` to correctly verify Row Level Security (RLS) policies for tables returning HTTP 200 with empty arrays `[]`.
+- Ran database connection check script (`node tools/check-database-link.mjs`) and confirmed all tables and storage bucket structures are healthy and secured.

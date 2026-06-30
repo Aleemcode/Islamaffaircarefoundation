@@ -3,6 +3,7 @@
 !.env.example
 node_modules/
 dist/
+supabase/.temp/
 .tmp/*
 !.tmp/.gitkeep
 .skill-build/
