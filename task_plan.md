@@ -22,7 +22,7 @@
 - [ ] Architect: document SOPs and implement testable components
   - [x] App shell: React/Vite routes, ISF design foundation, Supabase client, admin CMS shell
   - [x] Database: Supabase migrations, RLS, storage policies, seed content
-  - [ ] CMS: authenticated staff flows and CRUD modules
+  - [/] CMS: authenticated staff flows and CRUD modules
   - [ ] Public data: published-content queries and degraded states
 - [ ] Stylize: refine and review user-facing output
 - [ ] Trigger: deploy, configure triggers, and verify delivery

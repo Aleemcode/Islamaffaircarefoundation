@@ -53,3 +53,8 @@
 - Fixed a bug in `tools/check-database-link.mjs` to correctly verify Row Level Security (RLS) policies for tables returning HTTP 200 with empty arrays `[]`.
 - Ran database connection check script (`node tools/check-database-link.mjs`) and confirmed all tables and storage bucket structures are healthy and secured.
 - Discussed database pricing options and set up a daily GitHub Actions keep-alive workflow (`.github/workflows/keep-alive.yml`) to prevent automatic Supabase pausing.
+- Implemented CMS Admin Authentication & Role-Based Access Control (RBAC):
+  - Created `AuthProvider` context and `useAuth` hook wrapper.
+  - Implemented the `AdminLogin` form UI using Nigeria forest green styling parameters.
+  - Updated `AdminShell` to redirect unauthenticated staff and block unactivated profiles.
+  - Wrapped core routes in `App.tsx` and validated compilation with `npm run lint` and `npm run build`.
