@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { SectionHeader } from '@/components/SectionHeader';
-import { Megaphone, HandHeart, ShieldCheck, Landmark, Loader2 } from 'lucide-react';
+import { Megaphone, HandHeart, ShieldCheck, Landmark } from 'lucide-react';
 
 interface Program {
   id: string;
@@ -13,9 +13,38 @@ interface Program {
   service_regions: string[];
 }
 
+const defaultPrograms: Program[] = [
+  {
+    id: 'p1',
+    title: 'Islamic Da’wah',
+    summary: 'Lectures, learning resources, and community education shaped by verified scholarship and review.',
+    body: 'Outreach programs, learning materials, and scholarly textbooks.',
+    category: 'dawah',
+    objectives: ['Promote authentic knowledge', 'Provide verified learning materials'],
+    service_regions: ['Lagos', 'South-West Nigeria'],
+  },
+  {
+    id: 'p2',
+    title: 'Zakat and Sadaqa',
+    summary: 'A transparent welfare pathway for charitable support to vulnerable families.',
+    body: 'Direct distribution, Zakat audits, and support to approved recipients.',
+    category: 'zakat_sadaqa',
+    objectives: ['Eradicate poverty', 'Transparent distribution under scholarly review'],
+    service_regions: ['Lagos', 'Ogun', 'Oyo'],
+  },
+  {
+    id: 'p3',
+    title: 'Humanitarian Aid',
+    summary: 'Food, clothing, medical, and emergency relief programs.',
+    body: 'Providing welfare items, running emergency response, food drives.',
+    category: 'humanitarian_aid',
+    objectives: ['Provide immediate relief', 'Distribute welfare items without leakages'],
+    service_regions: ['Lagos', 'Nationwide'],
+  },
+];
+
 export function Programs() {
-  const [programs, setPrograms] = useState<Program[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [programs, setPrograms] = useState<Program[]>(defaultPrograms);
 
   useEffect(() => {
     supabase
@@ -24,8 +53,7 @@ export function Programs() {
       .eq('status', 'published')
       .order('sort_order', { ascending: true })
       .then(({ data }) => {
-        if (data) setPrograms(data as Program[]);
-        setLoading(false);
+        if (data && data.length > 0) setPrograms(data as Program[]);
       });
   }, []);
 
@@ -50,36 +78,25 @@ export function Programs() {
         body="Explore the approved outreach, educational, and charitable welfare programs managed by the foundation."
       />
 
-      {loading ? (
-        <div style={{ display: 'flex', justifyContent: 'center', padding: '60px' }}>
-          <Loader2 className="animate-spin text-isf-green" size={32} />
-        </div>
-      ) : programs.length === 0 ? (
-        <div className="empty-state">
-          <h3>No programs active currently</h3>
-          <p>Active programs will be published here directly from the CMS.</p>
-        </div>
-      ) : (
-        <div className="card-grid">
-          {programs.map((program) => {
-            const Icon = getCategoryIcon(program.category);
-            return (
-              <article className="program-card" key={program.id}>
-                <span className="icon-chip">
-                  <Icon size={22} />
-                </span>
-                <h3>{program.title}</h3>
-                <p>{program.summary}</p>
-                {program.service_regions.length > 0 && (
-                  <p className="field-hint" style={{ marginTop: '8px' }}>
-                    <strong>Regions:</strong> {program.service_regions.join(', ')}
-                  </p>
-                )}
-              </article>
-            );
-          })}
-        </div>
-      )}
+      <div className="card-grid">
+        {programs.map((program) => {
+          const Icon = getCategoryIcon(program.category);
+          return (
+            <article className="program-card" key={program.id}>
+              <span className="icon-chip">
+                <Icon size={22} />
+              </span>
+              <h3>{program.title}</h3>
+              <p>{program.summary}</p>
+              {program.service_regions.length > 0 && (
+                <p className="field-hint" style={{ marginTop: '8px' }}>
+                  <strong>Regions:</strong> {program.service_regions.join(', ')}
+                </p>
+              )}
+            </article>
+          );
+        })}
+      </div>
     </section>
   );
 }

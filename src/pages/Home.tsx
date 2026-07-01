@@ -29,12 +29,52 @@ interface SiteSettings {
 
 type LayoutVariant = 'editorial' | 'modernist' | 'atmospheric';
 
+// Fallbacks if database has no records
+const defaultPrograms: Program[] = [
+  {
+    title: 'Islamic Da’wah',
+    summary: 'Lectures, learning resources, and community education shaped by verified scholarship and careful review.',
+    category: 'dawah',
+    featured: true,
+  },
+  {
+    title: 'Zakat and Sadaqa',
+    summary: 'A transparent welfare pathway for charitable support to vulnerable families and approved causes.',
+    category: 'zakat_sadaqa',
+    featured: true,
+  },
+  {
+    title: 'Humanitarian Aid',
+    summary: 'Food, clothing, medical, Ramadan, and emergency support programs entered through the CMS before publication.',
+    category: 'humanitarian_aid',
+    featured: true,
+  },
+];
+
+const defaultCampaigns: Campaign[] = [
+  {
+    id: 'c1',
+    title: 'Zakat & Sadaqah Welfare Appeal',
+    summary: 'Direct food and medical relief program for distressed communities in Lagos and neighbouring states.',
+    goal_amount_minor: 500000000,
+    raised_amount_minor: 235000000,
+    campaign_status: 'active',
+  },
+  {
+    id: 'c2',
+    title: 'Islamic Library & Da’wah Resources',
+    summary: 'Funding for scholarly publication, translation, and distribution of verified textbooks and guides.',
+    goal_amount_minor: 150000000,
+    raised_amount_minor: 85000000,
+    campaign_status: 'active',
+  },
+];
+
 export function Home() {
   const [activeLayout, setActiveLayout] = useState<LayoutVariant>('editorial');
-  const [programs, setPrograms] = useState<Program[]>([]);
-  const [campaigns, setCampaigns] = useState<Campaign[]>([]);
+  const [programs, setPrograms] = useState<Program[]>(defaultPrograms);
+  const [campaigns, setCampaigns] = useState<Campaign[]>(defaultCampaigns);
   const [settings, setSettings] = useState<SiteSettings | null>(null);
-  const [loading, setLoading] = useState(true);
 
   // Time & Prayer State (Simulated for Lagos timezone)
   const [currentTime, setCurrentTime] = useState('');
@@ -69,13 +109,11 @@ export function Home() {
             .maybeSingle(),
         ]);
 
-        if (programsRes.data) setPrograms(programsRes.data as Program[]);
-        if (campaignsRes.data) setCampaigns(campaignsRes.data as Campaign[]);
+        if (programsRes.data && programsRes.data.length > 0) setPrograms(programsRes.data as Program[]);
+        if (campaignsRes.data && campaignsRes.data.length > 0) setCampaigns(campaignsRes.data as Campaign[]);
         if (settingsRes.data) setSettings(settingsRes.data as SiteSettings);
       } catch (err) {
-        console.error('Failed to load homepage data:', err);
-      } finally {
-        setLoading(false);
+        console.error('Failed to load homepage data from Supabase:', err);
       }
     }
     fetchHomeData();
@@ -94,49 +132,8 @@ export function Home() {
     }
   }
 
-  // Fallbacks if database has no records
-  const defaultPrograms = [
-    {
-      title: 'Islamic Da’wah',
-      summary: 'Lectures, learning resources, and community education shaped by verified scholarship and careful review.',
-      category: 'dawah' as const,
-      featured: true,
-    },
-    {
-      title: 'Zakat and Sadaqa',
-      summary: 'A transparent welfare pathway for charitable support to vulnerable families and approved causes.',
-      category: 'zakat_sadaqa' as const,
-      featured: true,
-    },
-    {
-      title: 'Humanitarian Aid',
-      summary: 'Food, clothing, medical, Ramadan, and emergency support programs entered through the CMS before publication.',
-      category: 'humanitarian_aid' as const,
-      featured: true,
-    },
-  ];
-
-  const defaultCampaigns = [
-    {
-      id: 'c1',
-      title: 'Zakat & Sadaqah Welfare Appeal',
-      summary: 'Direct food and medical relief program for distressed communities in Lagos and neighbouring states.',
-      goal_amount_minor: 500000000,
-      raised_amount_minor: 235000000,
-      campaign_status: 'active',
-    },
-    {
-      id: 'c2',
-      title: 'Islamic Library & Da’wah Resources',
-      summary: 'Funding for scholarly publication, translation, and distribution of verified textbooks and guides.',
-      goal_amount_minor: 150000000,
-      raised_amount_minor: 85000000,
-      campaign_status: 'active',
-    },
-  ];
-
-  const displayedPrograms = programs.length > 0 ? programs : defaultPrograms;
-  const displayedCampaigns = campaigns.length > 0 ? campaigns : defaultCampaigns;
+  const displayedPrograms = programs;
+  const displayedCampaigns = campaigns;
 
   return (
     <>
@@ -163,14 +160,8 @@ export function Home() {
         </button>
       </div>
 
-      {loading ? (
-        <div style={{ display: 'flex', justifyContent: 'center', padding: '120px 0' }}>
-          <Loader2 className="animate-spin text-isf-green" size={32} />
-        </div>
-      ) : (
-        <>
-          {/* LAYOUT 1: EDITORIAL SCHOLARLY */}
-          {activeLayout === 'editorial' && (
+      {/* LAYOUT 1: EDITORIAL SCHOLARLY */}
+      {activeLayout === 'editorial' && (
             <>
               {/* Islamic Utility Info Bar */}
               <div className="utility-info-bar">
@@ -574,8 +565,6 @@ export function Home() {
               </div>
             </section>
           )}
-        </>
-      )}
     </>
   );
 }
