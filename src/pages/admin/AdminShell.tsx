@@ -153,9 +153,8 @@ export function AdminShell() {
   return (
     <div className="admin-layout">
       <aside className="admin-sidebar">
-        <div className="sidebar-brand">
-          <img src="/assets/isf-emblem.svg" alt="" className="brand-mark" />
-          <span>ISF Console</span>
+        <div className="sidebar-brand" style={{ padding: '16px 20px' }}>
+          <img src="/assets/isf-logo-white.svg" alt="ISF Logo" style={{ height: '32px', width: 'auto', display: 'block' }} />
         </div>
 
         <nav className="sidebar-nav">

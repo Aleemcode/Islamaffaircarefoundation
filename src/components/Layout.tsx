@@ -11,10 +11,9 @@ function navClassName({ isActive }: { isActive: boolean }) {
 export function Layout() {
   return (
     <div className="site-shell">
-      <header className="site-header">
+      <header className="site-header" style={{ padding: '16px 0' }}>
         <NavLink to="/" className="brand-lockup" aria-label="Islamaffair Care Foundation home">
-          <img src="/assets/isf-emblem.svg" alt="" className="brand-mark" />
-          <span className="brand-text">Islamaffair Care Foundation</span>
+          <img src="/assets/isf-logo.svg" alt="Islamaffair Care Foundation" style={{ height: '38px', width: 'auto', display: 'block' }} />
         </NavLink>
 
         <nav className="desktop-nav" aria-label="Primary navigation">
@@ -40,9 +39,8 @@ export function Layout() {
 
       <footer className="site-footer">
         <div>
-          <div className="brand-lockup footer-brand">
-            <img src="/assets/isf-emblem.svg" alt="" className="brand-mark" />
-            <span className="brand-text">Islamaffair Care Foundation</span>
+          <div className="footer-brand" style={{ marginBottom: '16px' }}>
+            <img src="/assets/isf-logo-white.svg" alt="Islamaffair Care Foundation" style={{ height: '36px', width: 'auto', display: 'block' }} />
           </div>
           <p>
             A faith-based platform for da’wah, welfare, religious education, and community
